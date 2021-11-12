@@ -1,7 +1,6 @@
 const { User } = require('../models');
 const { comparePassword } = require('../helpers/bcrypt');
 const { generateToken } = require('../helpers/jwt');
-const { compare } = require('bcryptjs');
 
 const format = (user) => {
   const { id, first_name, last_name, email, username } = user;
