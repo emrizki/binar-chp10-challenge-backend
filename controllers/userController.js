@@ -21,6 +21,25 @@ const findOne = (req,res)=>{
     })
 }
 
+const getLeaderboard = (req,res)=>{
+    User.findAll({
+        order: [["total_score", "DESC"]]
+    })
+    .then(data =>{
+        res.status(200).json({
+            result:"success",
+            data: data
+        });
+    })
+    .catch(err =>{
+        res.status(500).json({
+            result:"failed",
+            message: err.message || "some error occured while retrieving game"
+        })
+    })
+}
+
 module.exports ={
-    findOne
+    findOne,
+    getLeaderboard
 }
