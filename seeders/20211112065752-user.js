@@ -18,6 +18,7 @@ module.exports = {
         email: 'dadang@gmail.com',
         username: 'dadang',
         password: '123',
+        total_score:'2',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -27,6 +28,7 @@ module.exports = {
         email: 'dadang1@gmail.com',
         username: 'dadang1',
         password: '123',
+        total_score:'3',
         createdAt: new Date(),
         updatedAt: new Date()
       },
