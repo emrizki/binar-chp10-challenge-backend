@@ -3,10 +3,15 @@ const router = require('./routes');
 const passport = require('./lib/passport');
 const app = express();
 
+const swaggerUI = require('swagger-ui-express');
+
+
+const swaggerJSON = require('./swagger.json');
 const port = process.env.port || 3000;
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJSON));
 app.use(router);
 
 app.use(passport.initialize());
