@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const authRouter = require('./authRouter');
+const userRouter = require('./userRouter');
 const game = require('./gameRouter');
-const user = require('./userRouter');
 
 router.use('/', authRouter);
 router.use('/game', game);
-router.use('/user', user);
+router.use('/user', userRouter);
 
 module.exports = router;

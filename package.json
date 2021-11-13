@@ -6,6 +6,7 @@
   "scripts": {
     "db:create": "npx sequelize db:create",
     "db:migrate": "npx sequelize db:migrate",
+    "db:migrate:development": "NODE_ENV=development npx sequelize db:migrate",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
