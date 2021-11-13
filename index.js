@@ -10,11 +10,12 @@ const swaggerJSON = require('./swagger.json');
 const port = process.env.port || 3000;
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJSON));
-app.use(router);
-
 app.use(passport.initialize());
+app.use(router);
 
 app.listen(port, () => {
   console.log(`this app listening at http://localhost:${port}`);
