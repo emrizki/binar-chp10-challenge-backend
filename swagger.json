@@ -1,0 +1,309 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Binar Academy Bootcamp challenge chapter 9",
+        "version": "1.0.0",
+        "title": "api-binar-challenge-fsw-ch-9",
+        "termsOfService": "https://websitekamu/linkKeTermOfService",
+        "contact": {
+            "email": "kamu@mail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "Auth",
+            "description": ""
+        },
+        {
+            "name": "Game",
+            "description": ""
+        },
+        {
+            "name": "User",
+            "description": ""
+        }
+    ],
+    "securityDefinitions": {
+        "Token": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/game": {
+            "get": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "List all Game",
+                "description": "",
+                "parameters": [],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "batu-kertas-gunting"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "game batu kertas dan gunting"
+                                            },
+                                            "thumbnail_url": {
+                                                "type": "string",
+                                                "example": "lorem"
+                                            },
+                                            "game_url": {
+                                                "type": "string",
+                                                "example": "lorem ipsum"
+                                            },
+                                            "play_count": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while creating the Player"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/game/{id}": {
+            "get": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "Get detail game",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of game",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "batu-kertas-gunting"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "game batu kertas dan gunting"
+                                            },
+                                            "thumbnail_url": {
+                                                "type": "string",
+                                                "example": "lorem"
+                                            },
+                                            "game_url": {
+                                                "type": "string",
+                                                "example": "lorem ipsum"
+                                            },
+                                            "play_count": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while creating the Player"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get detail user",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of user",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "batu-kertas-gunting"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "game batu kertas dan gunting"
+                                            },
+                                            "thumbnail_url": {
+                                                "type": "string",
+                                                "example": "lorem"
+                                            },
+                                            "game_url": {
+                                                "type": "string",
+                                                "example": "lorem ipsum"
+                                            },
+                                            "play_count": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while creating the Player"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
