@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'id',
         as: 'detail_game'
       });
+      
       this.belongsTo(models.User, {
         foreignKey: 'userId',
         sourceKey: 'id',
@@ -30,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Detail',
-    tableName:'detail'
+    tableName:'details'
   });
   return Detail;
 };
