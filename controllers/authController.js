@@ -11,14 +11,17 @@ const format = (user) => {
     username,
   };
 
-  return {
-    id,
-    first_name,
-    last_name,
-    email,
-    username,
-    accessToken: generateToken(payload),
-  };
+  return res.status(200).json({
+    message: 'Login Successfully',
+    data: {
+      id,
+      first_name,
+      last_name,
+      email,
+      username,
+      accessToken: generateToken(payload),
+    },
+  });
 };
 
 const register = async (req, res) => {
@@ -26,14 +29,20 @@ const register = async (req, res) => {
 
   try {
     const user = await User.findOne({
-      where: { email, username },
+      where: { username },
     });
 
     if (user) {
-      return res.json('User already registered');
+      return res
+        .status(409)
+        .json({ message: 'The username is alredy registerd' });
     }
   } catch (err) {
-    return res.json(err);
+    return res.staus(400).json({
+      message:
+        'Registration Failed, Please go back and double check your information and make sure that is valid',
+      errorMessage: err.message,
+    });
   }
 
   try {
@@ -45,9 +54,13 @@ const register = async (req, res) => {
       password,
     });
 
-    return res.json(user);
+    return res.status(201).json({
+      message: 'Congratulations, your account has been successfully created.',
+    });
   } catch (err) {
-    return res.json(err);
+    return res
+      .status(500)
+      .json({ message: 'Internal Server Error', errorMessage: err.message });
   }
 };
 
@@ -60,7 +73,7 @@ const login = async (req, res) => {
     });
 
     if (!user) {
-      return res.json('User not found');
+      return res.status(404).json({ message: 'User Not Found' });
     }
 
     const match = comparePassword(password, user.password);
@@ -68,10 +81,14 @@ const login = async (req, res) => {
     if (match) {
       return res.json(format(user));
     } else {
-      return res.json('Wrong Username or Password');
+      return res
+        .status(401)
+        .json({ message: 'Please enter a valid username or password' });
     }
   } catch (err) {
-    return res.json(err);
+    return res
+      .staus(500)
+      .json({ message: 'Internal Server Error', errorMessage: err.message });
   }
 };
 module.exports = { register, login };
