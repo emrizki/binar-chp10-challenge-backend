@@ -14,7 +14,7 @@
         }
     },
     "host": "localhost:3000",
-    "basePath": "",
+    "basePath": "/api",
     "tags": [
         {
             "name": "Auth",
@@ -374,6 +374,87 @@
                                                 "example": "2021-10-27T13:00:39.286Z"
                                             }
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while creating the Player"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}/score": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "update score user in some game",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of user",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "id of game and score",
+                        "required": true,
+                        "schema": {
+                            "type":"object",
+                            "properties": {
+                                "gameId":{
+                                    "type":"integer",
+                                    "example":"1"
+                                },
+                                "score":{
+                                    "type":"integer",
+                                    "example":"10"
+                                }
+                            }
+                        }
+                    }
+
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "score": {
+                                            "type": "integer",
+                                            "example": "20"
+                                        }
+                                        
                                     }
                                 }
                             }
