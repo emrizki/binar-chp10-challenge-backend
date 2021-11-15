@@ -1,6 +1,6 @@
 const env = process.env.NODE_ENV || 'development';
 const upperCaseEnv = env.toUpperCase();
-
+require('dotenv').config()
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
 const username = process.env['DB_USERNAME_' + upperCaseEnv];

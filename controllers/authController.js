@@ -1,17 +1,23 @@
 const { User } = require('../models');
 const { comparePassword } = require('../helpers/bcrypt');
 const { generateToken } = require('../helpers/jwt');
-const { compare } = require('bcryptjs');
 
 const format = (user) => {
   const { id, first_name, last_name, email, username } = user;
+
+  const payload = {
+    id,
+    email,
+    username,
+  };
+
   return {
     id,
     first_name,
     last_name,
     email,
     username,
-    accessToken: generateToken(),
+    accessToken: generateToken(payload),
   };
 };
 
