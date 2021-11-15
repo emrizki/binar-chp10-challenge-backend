@@ -1,5 +1,6 @@
-const { User } = require('../models');
-const user = require('../models/user');
+const { User, Detail } = require('../models');
+
+
 
 const getAllUser = async (req, res) => {
   try {
@@ -55,48 +56,94 @@ const updateUser = async (req, res) => {
   }
 };
 
-const findOne = (req,res)=>{
-    User.findAll({
-        where:{
-            id:req.params.id
-        }
+const findOne = (req, res) => {
+  User.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(data => {
+      res.status(200).json({
+        result: "success",
+        data: data
+      });
     })
-    .then(data =>{
-        res.status(200).json({
-            result:"success",
-            data: data
-        });
-    })
-    .catch(err =>{
-        res.status(500).json({
-            result:"failed",
-            message: err.message || "some error occured while retrieving game"
-        })
-    })
-}
-
-const getLeaderboard = (req,res)=>{
-    User.findAll({
-        order: [["total_score", "DESC"]]
-    })
-    .then(data =>{
-        res.status(200).json({
-            result:"success",
-            data: data
-        });
-    })
-    .catch(err =>{
-        res.status(500).json({
-            result:"failed",
-            message: err.message || "some error occured while retrieving game"
-        })
+    .catch(err => {
+      res.status(500).json({
+        result: "failed",
+        message: err.message || "some error occured while retrieving game"
+      })
     })
 }
 
-module.exports ={
-    findOne,
-    getLeaderboard,
-    getAllUser,
-    updateUser
+const getLeaderboard = (req, res) => {
+  User.findAll({
+    order: [["total_score", "DESC"]]
+  })
+    .then(data => {
+      res.status(200).json({
+        result: "success",
+        data: data
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        result: "failed",
+        message: err.message || "some error occured while retrieving game"
+      })
+    })
+}
+
+const updateScore = async (req, res) => {
+  let user = await Detail.findOne(
+    {
+    attributes: [
+      "score"
+    ],
+    where: {
+      userId: req.params.id,
+      gameId: req.body.gameId
+    }
+  })
+
+
+  console.log(JSON.stringify(user['score']))
+  Detail.update(
+    {
+      "score": parseInt(req.body.score) + user['score']
+    },
+    {
+      where: {
+        userId: req.params.id,
+        gameId: req.body.gameId
+      },
+      returning:true,
+
+    }
+  )
+  .then(data =>{
+    res.status(200).json({
+      result: "success",
+      data: {
+        score:data[1][0].score
+      }
+    })
+  })
+  .catch(err =>{
+    res.status(500).json({
+      result: "failed",
+      message: err.message || "some error occured while retrieving game"
+    })
+  })
+
+
+}
+
+module.exports = {
+  findOne,
+  getLeaderboard,
+  getAllUser,
+  updateUser,
+  updateScore
 }
 
