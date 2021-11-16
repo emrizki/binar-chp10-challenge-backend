@@ -7,6 +7,8 @@
     "db:create": "npx sequelize db:create",
     "db:migrate": "npx sequelize db:migrate",
     "db:migrate:development": "NODE_ENV=development npx sequelize db:migrate",
+    "db:undo:migrate:development":"NODE_ENV=development npx sequelize db:migrate:undo:all",
+    "db:seed:development":"NODE_ENV=development npx sequelize db:seed:all",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
