@@ -106,8 +106,6 @@ const updateScore = async (req, res) => {
     }
   })
 
-
-  console.log(JSON.stringify(user['score']))
   Detail.update(
     {
       "score": parseInt(req.body.score) + user['score']
