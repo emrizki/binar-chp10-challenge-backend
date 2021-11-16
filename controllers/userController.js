@@ -52,7 +52,7 @@ const updateUser = async (req, res) => {
 
     return res.status(200).json(user[1][0]);
   } catch (err) {
-    res.statu(400).json({ message: err.message });
+    res.status(400).json({ message: err.message });
   }
 };
 
