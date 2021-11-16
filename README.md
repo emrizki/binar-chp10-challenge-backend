@@ -6,7 +6,7 @@
  ## Setup for development
  * clone repo `git clone https://github.com/Binar-Academy-Team-1/Binar_Chapter_9_BackEnd.git`
  * instal dependensis `npm install`
- * checkout ke branch development `git checkout develoopment`
+ * checkout ke branch development `git checkout development`
  * duplikat file `.env.example` lalu rename menjadi `.env`
  * sesuaikan isi file `.env` dengan database masing masing
  * create database `sequelize db:create`
