@@ -6,12 +6,12 @@
  ## Setup for development
  * clone repo `git clone https://github.com/Binar-Academy-Team-1/Binar_Chapter_9_BackEnd.git`
  * instal dependensis `npm install`
+ * checkout ke branch development `git checkout development`
+ * duplikat file `.env.example` lalu rename menjadi `.env`
+ * sesuaikan isi file `.env` dengan database masing masing
  * create database `sequelize db:create`
  * jalankan migration `npm run db:migrate:development`
  * jalankan seeder `npm run db:seed:development`
- * duplikat file `.env.example` lalu rename menjadi `.env`
- * sesuaikan isi file `.env` dengan database masing masing
- * checkout ke branch development `git checkout develoopment`
  * jalankan aplikasi `npm run dev`
 
  ## Available Script
