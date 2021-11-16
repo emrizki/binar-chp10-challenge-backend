@@ -56,6 +56,7 @@ const register = async (req, res) => {
 
     return res.status(201).json({
       message: 'Congratulations, your account has been successfully created.',
+      data: { user },
     });
   } catch (err) {
     return res
