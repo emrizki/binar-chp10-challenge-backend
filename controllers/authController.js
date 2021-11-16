@@ -80,7 +80,7 @@ const login = async (req, res) => {
     const match = comparePassword(password, user.password);
 
     if (match) {
-      return res.json(format(user));
+      return res.status(201).json(format(user));
     } else {
       return res
         .status(401)
