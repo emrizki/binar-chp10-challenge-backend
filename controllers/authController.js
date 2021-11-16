@@ -38,7 +38,7 @@ const register = async (req, res) => {
         .json({ message: 'The username is alredy registerd' });
     }
   } catch (err) {
-    return res.staus(400).json({
+    return res.status(400).json({
       message:
         'Registration Failed, Please go back and double check your information and make sure that is valid',
       errorMessage: err.message,
