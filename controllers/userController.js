@@ -47,12 +47,12 @@ const updateUser = async (req, res) => {
     const user = await User.update(payload, { where: { id }, returning: true });
 
     if (!user) {
-      return res.status(404).json(' User Not Found');
+      return res.status(404).json({ message: ' User Not Found'});
     }
 
     return res.status(200).json(user[1][0]);
   } catch (err) {
-    res.statu(400).json({ message: err.message });
+    res.status(400).json({ message: err.message });
   }
 };
 

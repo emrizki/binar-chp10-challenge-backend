@@ -11,7 +11,7 @@ const format = (user) => {
     username,
   };
 
-  return res.status(200).json({
+  return {
     message: 'Login Successfully',
     data: {
       id,
@@ -21,7 +21,7 @@ const format = (user) => {
       username,
       accessToken: generateToken(payload),
     },
-  });
+  };
 };
 
 const register = async (req, res) => {
@@ -38,7 +38,7 @@ const register = async (req, res) => {
         .json({ message: 'The username is alredy registerd' });
     }
   } catch (err) {
-    return res.staus(400).json({
+    return res.status(400).json({
       message:
         'Registration Failed, Please go back and double check your information and make sure that is valid',
       errorMessage: err.message,
@@ -80,7 +80,7 @@ const login = async (req, res) => {
     const match = comparePassword(password, user.password);
 
     if (match) {
-      return res.json(format(user));
+      return res.status(201).json(format(user));
     } else {
       return res
         .status(401)
