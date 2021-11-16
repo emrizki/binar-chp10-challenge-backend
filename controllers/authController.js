@@ -11,7 +11,7 @@ const format = (user) => {
     username,
   };
 
-  return res.status(200).json({
+  return {
     message: 'Login Successfully',
     data: {
       id,
@@ -21,7 +21,7 @@ const format = (user) => {
       username,
       accessToken: generateToken(payload),
     },
-  });
+  };
 };
 
 const register = async (req, res) => {
