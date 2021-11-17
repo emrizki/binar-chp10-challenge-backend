@@ -16,9 +16,9 @@
 
  ## Available Script
  * `npm run dev` to run app with env development
- * `npm run db:migrate:development` to migrate db for env development
- * `npm run db:undo:migrate:development` to undo migration for env development
- * `npm run db:seed:development` to seed db for env development
+ * `npm run db:migrate` to migrate db for env development
+ * `npm run db:undo:migrate` to undo migration for env development
+ * `npm run db:seed` to seed db for env development
 
 ## Access swagger documentation
  * pastikan telah menginstall sewgger-ui
