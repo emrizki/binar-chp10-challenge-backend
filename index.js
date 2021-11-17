@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const router = require('./routes');
 const passport = require('./lib/passport');
 const app = express();
@@ -8,6 +9,10 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerJSON = require('./swagger.json');
 const port = process.env.PORT || 3000;
 
+var corsOptions = {
+  origin: "http://localhost:3001"
+};
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

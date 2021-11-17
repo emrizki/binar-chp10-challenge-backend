@@ -17,7 +17,7 @@ module.exports = {
         last_name: 'kurniawan',
         email: 'dadang@gmail.com',
         username: 'dadang',
-        password: '123',
+        password: '$2a$10$ZZYz/bUF9y34/6UnG4zMqe7P1nHtSxchY24qekHOuuM4gfsimemgq',
         total_score:'2',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -27,7 +27,7 @@ module.exports = {
         last_name: 'kurniawan2',
         email: 'dadang1@gmail.com',
         username: 'dadang1',
-        password: '123',
+        password: '$2a$10$ZZYz/bUF9y34/6UnG4zMqe7P1nHtSxchY24qekHOuuM4gfsimemgq',
         total_score:'3',
         createdAt: new Date(),
         updatedAt: new Date()
