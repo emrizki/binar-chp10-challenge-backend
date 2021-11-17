@@ -6,9 +6,8 @@
   "scripts": {
     "db:create": "NODE_ENV=development npx sequelize db:create",
     "db:migrate": "NODE_ENV=development npx sequelize db:migrate",
-    "db:migrate:development": "NODE_ENV=development npx sequelize db:migrate",
-    "db:undo:migrate:development": "NODE_ENV=development npx sequelize db:migrate:undo:all",
-    "db:seed:development": "NODE_ENV=development npx sequelize db:seed:all",
+    "db:undo:migrate": "NODE_ENV=development npx sequelize db:migrate:undo:all",
+    "db:seed": "NODE_ENV=development npx sequelize db:seed:all",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
