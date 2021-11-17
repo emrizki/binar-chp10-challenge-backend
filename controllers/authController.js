@@ -35,12 +35,13 @@ const register = async (req, res) => {
     if (user) {
       return res
         .status(409)
-        .json({ message: 'The username is alredy registerd' });
+        .json({ message: 'The username is already registered' });
     }
+
+    // throw new Error('another error, e.g internal server error');
   } catch (err) {
-    return res.status(400).json({
-      message:
-        'Registration Failed, Please go back and double check your information and make sure that is valid',
+    return res.status(500).json({
+      message: 'Oops! Something went wrong',
       errorMessage: err.message,
     });
   }
@@ -59,9 +60,11 @@ const register = async (req, res) => {
       data: { user },
     });
   } catch (err) {
-    return res
-      .status(500)
-      .json({ message: 'Internal Server Error', errorMessage: err.message });
+    return res.status(400).json({
+      message:
+        'Registration Failed, Please go back and double check your information and make sure that is valid',
+      errorMessage: err.errors[0].message,
+    });
   }
 };
 
@@ -77,8 +80,9 @@ const login = async (req, res) => {
       return res.status(404).json({ message: 'User Not Found' });
     }
 
-    const match = comparePassword(password, user.password);
+    // throw new Error('another error, e.g internal server error');
 
+    const match = comparePassword(password, user.password);
     if (match) {
       return res.status(201).json(format(user));
     } else {
@@ -87,9 +91,11 @@ const login = async (req, res) => {
         .json({ message: 'Please enter a valid username or password' });
     }
   } catch (err) {
-    return res
-      .staus(500)
-      .json({ message: 'Internal Server Error', errorMessage: err.message });
+    return res.status(500).json({
+      message: 'Oops! Something went wrong',
+      errorMessage: err.message,
+    });
   }
 };
+
 module.exports = { register, login };

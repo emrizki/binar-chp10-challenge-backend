@@ -1,7 +1,5 @@
 const { User, Detail } = require('../models');
 
-
-
 const getAllUser = async (req, res) => {
   try {
     const users = await User.findAll();
@@ -47,101 +45,99 @@ const updateUser = async (req, res) => {
     const user = await User.update(payload, { where: { id }, returning: true });
 
     if (!user) {
-      return res.status(404).json({ message: ' User Not Found'});
+      return res.status(404).json({ message: ' User Not Found' });
     }
-
-    return res.status(200).json(user[1][0]);
+    return res.status(200).json({
+      message: 'Congratulations, your account has been successfully updated.',
+      data: user[1][0],
+    });
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    return res.status(500).json({
+      message: 'Oops! Something went wrong',
+      errorMessage: err.errors[0].message,
+    });
   }
 };
 
 const findOne = (req, res) => {
   User.findAll({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(data => {
+    .then((data) => {
       res.status(200).json({
-        result: "success",
-        data: data
+        result: 'success',
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        result: "failed",
-        message: err.message || "some error occured while retrieving game"
-      })
-    })
-}
+        result: 'failed',
+        message: err.message || 'some error occured while retrieving game',
+      });
+    });
+};
 
 const getLeaderboard = (req, res) => {
   User.findAll({
-    order: [["total_score", "DESC"]]
+    order: [['total_score', 'DESC']],
   })
-    .then(data => {
+    .then((data) => {
       res.status(200).json({
-        result: "success",
-        data: data
+        result: 'success',
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        result: "failed",
-        message: err.message || "some error occured while retrieving game"
-      })
-    })
-}
+        result: 'failed',
+        message: err.message || 'some error occured while retrieving game',
+      });
+    });
+};
 
 const updateScore = async (req, res) => {
-  let user = await Detail.findOne(
-    {
-    attributes: [
-      "score"
-    ],
+  let user = await Detail.findOne({
+    attributes: ['score'],
     where: {
       userId: req.params.id,
-      gameId: req.body.gameId
-    }
-  })
+      gameId: req.body.gameId,
+    },
+  });
 
   Detail.update(
     {
-      "score": parseInt(req.body.score) + user['score']
+      score: parseInt(req.body.score) + user['score'],
     },
     {
       where: {
         userId: req.params.id,
-        gameId: req.body.gameId
+        gameId: req.body.gameId,
       },
-      returning:true,
-
+      returning: true,
     }
   )
-  .then(data =>{
-    res.status(200).json({
-      result: "success",
-      data: {
-        score:data[1][0].score
-      }
+    .then((data) => {
+      res.status(200).json({
+        result: 'success',
+        data: {
+          score: data[1][0].score,
+        },
+      });
     })
-  })
-  .catch(err =>{
-    res.status(500).json({
-      result: "failed",
-      message: err.message || "some error occured while retrieving game"
-    })
-  })
-
-
-}
+    .catch((err) => {
+      res.status(500).json({
+        result: 'failed',
+        message: err.message || 'some error occured while retrieving game',
+      });
+    });
+};
 
 module.exports = {
   findOne,
   getLeaderboard,
   getAllUser,
   updateUser,
-  updateScore
-}
-
+  updateScore,
+};
