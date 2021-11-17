@@ -9,9 +9,9 @@
  * instal dependensis `npm install`
  * duplikat file `.env.example` lalu rename menjadi `.env`
  * sesuaikan isi file `.env` dengan database masing masing
- * create database `sequelize db:create`
- * jalankan migration `npm run db:migrate:development`
- * jalankan seeder `npm run db:seed:development`
+ * create database `npm run db:create`
+ * jalankan migration `npm run db:migrate`
+ * jalankan seeder `npm run db:seed`
  * jalankan aplikasi `npm run dev`
 
  ## Available Script
