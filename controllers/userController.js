@@ -62,7 +62,7 @@ const updateUser = async (req, res) => {
 const findOne = (req, res) => {
   User.findAll({
     where: {
-      id: req.params.id,
+      username: req.params.username,
     },
   })
     .then((data) => {

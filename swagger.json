@@ -223,7 +223,7 @@
                                 },
                                 "password": {
                                     "type": "string",
-                                    "example": "123"
+                                    "example": "123456"
                                 }
                             }
                         }
@@ -688,7 +688,7 @@
                 ]
             }
         },
-        "/user/{id}": {
+        "/user/{username}": {
             "get": {
                 "tags": [
                     "User"
@@ -697,11 +697,11 @@
                 "description": "",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "username",
                         "in": "path",
-                        "description": "id of user",
+                        "description": "username of user",
                         "required": true,
-                        "type": "integer"
+                        "type": "string"
                     }
                 ],
                 "produces": [

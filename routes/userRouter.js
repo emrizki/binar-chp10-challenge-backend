@@ -6,7 +6,7 @@ const userController = require('../controllers/userController');
 
 router.use(restrict);
 router.get('/', userController.getAllUser);
-router.get('/:id',userController.findOne);
+router.get('/:username',userController.findOne);
 router.put('/update/:id', authorization, userController.updateUser);
 router.put('/:id/score', userController.updateScore);
 
