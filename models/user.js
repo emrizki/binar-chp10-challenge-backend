@@ -63,12 +63,11 @@ module.exports = (sequelize, DataTypes) => {
         beforeCreate: (user, options) => {
           user.password = hashPassword(user.password);
         },
-        beforeValidate: (user, options) => {
-          console.log('haloooo');
-          user.password = hashPassword(user.password);
-        },
       },
     }
   );
+  User.addHook('beforeBulkUpdate', (user, options) => {
+    user.attributes.password = hashPassword(user.attributes.password);
+  });
   return User;
 };
