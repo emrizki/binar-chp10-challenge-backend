@@ -27,6 +27,10 @@
         {
             "name": "User",
             "description": ""
+        },
+        {
+            "name": "Score",
+            "description": ""
         }
     ],
     "securityDefinitions": {
@@ -976,7 +980,7 @@
         "/score": {
             "put": {
                 "tags": [
-                    "User"
+                    "Score"
                 ],
                 "summary": "update score user in some game",
                 "description": "",
