@@ -27,6 +27,10 @@
         {
             "name": "User",
             "description": ""
+        },
+        {
+            "name": "Score",
+            "description": ""
         }
     ],
     "securityDefinitions": {
@@ -1084,21 +1088,14 @@
                 ]
             }
         },
-        "/user/{id}/score": {
+        "/score": {
             "put": {
                 "tags": [
-                    "User"
+                    "Score"
                 ],
                 "summary": "update score user in some game",
                 "description": "If the score has not been recorded, the system will add a score, if it is recorded, the system will change the score data",
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of user",
-                        "required": true,
-                        "type": "integer"
-                    },
                     {
                         "name": "body",
                         "in": "body",
