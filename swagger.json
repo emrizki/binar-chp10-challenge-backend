@@ -973,7 +973,7 @@
                 ]
             }
         },
-        "/user/{id}/score": {
+        "/score": {
             "put": {
                 "tags": [
                     "User"
@@ -981,13 +981,6 @@
                 "summary": "update score user in some game",
                 "description": "",
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of user",
-                        "required": true,
-                        "type": "integer"
-                    },
                     {
                         "name": "body",
                         "in": "body",

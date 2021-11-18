@@ -7,7 +7,6 @@ router.get('/:username',userController.findOne);
 router.use(restrict);
 router.get('/', userController.getAllUser);
 router.put('/update/:id', authorization, userController.updateUser);
-router.put('/:id/score', userController.updateScore);
 
 
 module.exports = router;
