@@ -5,9 +5,9 @@ module.exports = async (req, res, next) => {
     const id = +req.params.id;
     const user = await User.findOne({ where: { id } });
     if (user.id === req.user.id) {
-      next();
+      return next();
     }
-    res
+    return res
       .status(401)
       .json({
         result:"failed",
