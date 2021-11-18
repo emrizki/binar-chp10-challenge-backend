@@ -68,13 +68,15 @@ const findOne = (req, res) => {
     .then((data) => {
       res.status(200).json({
         result: 'success',
+        message: "successfully retrieve data",
         data: data,
       });
     })
     .catch((err) => {
       res.status(500).json({
         result: 'failed',
-        message: err.message || 'some error occured while retrieving game',
+        message: 'some error occured while retrieving game',
+        error: err.message 
       });
     });
 };
@@ -86,13 +88,15 @@ const getLeaderboard = (req, res) => {
     .then((data) => {
       res.status(200).json({
         result: 'success',
+        message: "successfully retrieve data",
         data: data,
       });
     })
     .catch((err) => {
       res.status(500).json({
         result: 'failed',
-        message: err.message || 'some error occured while retrieving game',
+        message: 'some error occured while retrieving game',
+        error: err.message 
       });
     });
 };
@@ -121,6 +125,7 @@ const updateScore = async (req, res) => {
     .then((data) => {
       res.status(200).json({
         result: 'success',
+        message: "score player has been successfully updated",
         data: {
           score: data[1][0].score,
         },
@@ -129,7 +134,8 @@ const updateScore = async (req, res) => {
     .catch((err) => {
       res.status(500).json({
         result: 'failed',
-        message: err.message || 'some error occured while retrieving game',
+        message:'some error occured while updating game',
+        error: err.message 
       });
     });
 };
