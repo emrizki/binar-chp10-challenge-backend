@@ -5,19 +5,21 @@ const findAll = (req,res)=>{
     .then(data =>{
         res.status(200).json({
             result:"success",
+            message: "successfully retrieve data",
             data: data
         });
     })
     .catch(err=>{
         res.status(500).json({
             result: "failed",
-            message: err.message || "some eror occured while retrieving game."
+            message:  "some eror occured while retrieving game.",
+            error: err.message
         });
     })
 }
 
 const findOne = (req,res)=>{
-    Game.findAll({
+    Game.findOne({
         where:{
             id:req.params.id
         }
@@ -25,13 +27,15 @@ const findOne = (req,res)=>{
     .then(data =>{
         res.status(200).json({
             result:"success",
+            message: "successfully retrieve data",
             data: data
         });
     })
     .catch(err =>{
         res.status(500).json({
             result:"failed",
-            message: err.message || "some error occured while retrieving game"
+            message: "some error occured while retrieving game",
+            error: err.message 
         })
     })
 }
@@ -56,13 +60,15 @@ const getLeaderboard = (req,res)=>{
     .then(detail=>{
         res.status(200).json({
             result:"success",
+            message: "successfully retrieve data",
             data: detail
         });
     })
     .catch(err =>{
         res.status(500).json({
             result:"failed",
-            message: err.message || "some error occured while retrieving game"
+            message: "some error occured while retrieving game",
+            error: err.message 
         })
     })
 }
