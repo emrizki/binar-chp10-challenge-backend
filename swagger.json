@@ -89,6 +89,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"success"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Congratulations, your account has been successfully created."
@@ -96,58 +100,53 @@
                                 "data": {
                                     "type": "object",
                                     "properties": {
-                                        "user":{
-                                            "type":"object",
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": "1"
-                                                },
-                                                "first_name": {
-                                                    "type": "string",
-                                                    "example": "dadang"
-                                                },
-                                                "last_name": {
-                                                    "type": "string",
-                                                    "example": "kurniawan"
-                                                },
-                                                "username": {
-                                                    "type": "string",
-                                                    "example": "dadang123"
-                                                },
-                                                "email": {
-                                                    "type": "string",
-                                                    "example": "dadang123@gmail.com"
-                                                },
-                                                "password": {
-                                                    "type": "string",
-                                                    "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
-                                                },
-                                                "total_score": {
-                                                    "type": "integer",
-                                                    "example": "1"
-                                                },
-                                                "bio": {
-                                                    "type": "string",
-                                                    "example": "lorem ipsum"
-                                                },
-                                                "location": {
-                                                    "type": "string",
-                                                    "example": "lorem ipsum"
-                                                },
-                                                "socail_media_url": {
-                                                    "type": "string",
-                                                    "example": "www.blbalbalba.com"
-                                                },
-                                                "craterdAt": {
-                                                    "type": "string",
-                                                    "example": "2021-10-27T13:00:39.286Z"
-                                                },
-                                                "updatedAt": {
-                                                    "type": "string",
-                                                    "example": "2021-10-27T13:00:39.286Z"
-                                                }
-                                            }
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "dadang"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "kurniawan"
+                                        },
+                                        "username": {
+                                            "type": "string",
+                                            "example": "dadang123"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "dadang123@gmail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                                        },
+                                        "total_score": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "bio": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "location": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "socail_media_url": {
+                                            "type": "string",
+                                            "example": "www.blbalbalba.com"
+                                        },
+                                        "craterdAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
                                         }
                                     }
                                 }
@@ -159,11 +158,15 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Registration Failed, Please go back and double check your information and make sure that is valid"
                                 },
-                                "errorMessage": {
+                                "error": {
                                     "type": "string",
                                     "example": "error"
                                 }
@@ -175,6 +178,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "The username is alredy registerd"
@@ -187,11 +194,15 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Internal Server Error"
                                 },
-                                "errorMessage": {
+                                "error": {
                                     "type": "string",
                                     "example": "error"
                                 }
@@ -238,6 +249,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"success"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Login Successfully"
@@ -280,6 +295,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "User not found"
@@ -292,6 +311,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Please enter a valid username or password"
@@ -304,11 +327,15 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Internal Server Error"
                                 },
-                                "errorMessage": {
+                                "error": {
                                     "type": "string",
                                     "example": "error"
                                 }
@@ -338,6 +365,10 @@
                                 "result": {
                                     "type": "string",
                                     "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
                                 },
                                 "data": {
                                     "type": "array",
@@ -393,7 +424,12 @@
                                 },
                                 "message": {
                                     "type": "string",
-                                    "example": "Some error occurred while creating the Player"
+                                    "example": "Some error occurred while retriving the Game"
+                                    
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
                                 }
                             }
                         }
@@ -430,45 +466,62 @@
                                     "type": "string",
                                     "example": "SUCCESS"
                                 },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
+                                },
                                 "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "id": {
-                                                "type": "integer",
-                                                "example": "1"
-                                            },
-                                            "name": {
-                                                "type": "string",
-                                                "example": "batu-kertas-gunting"
-                                            },
-                                            "description": {
-                                                "type": "string",
-                                                "example": "game batu kertas dan gunting"
-                                            },
-                                            "thumbnail_url": {
-                                                "type": "string",
-                                                "example": "lorem"
-                                            },
-                                            "game_url": {
-                                                "type": "string",
-                                                "example": "lorem ipsum"
-                                            },
-                                            "play_count": {
-                                                "type": "integer",
-                                                "example": "1"
-                                            },
-                                            "craterdAt": {
-                                                "type": "string",
-                                                "example": "2021-10-27T13:00:39.286Z"
-                                            },
-                                            "updatedAt": {
-                                                "type": "string",
-                                                "example": "2021-10-27T13:00:39.286Z"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "batu-kertas-gunting"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "game batu kertas dan gunting"
+                                        },
+                                        "thumbnail_url": {
+                                            "type": "string",
+                                            "example": "lorem"
+                                        },
+                                        "game_url": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "play_count": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "craterdAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "game not registred"
                                 }
                             }
                         }
@@ -484,7 +537,11 @@
                                 },
                                 "message": {
                                     "type": "string",
-                                    "example": "Some error occurred while creating the Player"
+                                    "example": "Some error occurred while retreving the Game data"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
                                 }
                             }
                         }
@@ -520,6 +577,10 @@
                                 "result": {
                                     "type": "string",
                                     "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
                                 },
                                 "data": {
                                     "type": "array",
@@ -577,6 +638,10 @@
                                 "message": {
                                     "type": "string",
                                     "example": "Some error occurred while creating the Player"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
                                 }
                             }
                         }
@@ -601,121 +666,13 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "users": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "first_name": {
-                                                "type": "string",
-                                                "example": "dadang"
-                                            },
-                                            "last_name": {
-                                                "type": "string",
-                                                "example": "kurniawan"
-                                            },
-                                            "username": {
-                                                "type": "string",
-                                                "example": "dadang123"
-                                            },
-                                            "email": {
-                                                "type": "string",
-                                                "example": "dadang123@gmail.com"
-                                            },
-                                            "password": {
-                                                "type": "string",
-                                                "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
-                                            },
-                                            "total_score": {
-                                                "type": "integer",
-                                                "example": "1"
-                                            },
-                                            "bio": {
-                                                "type": "string",
-                                                "example": "lorem ipsum"
-                                            },
-                                            "location": {
-                                                "type": "string",
-                                                "example": "lorem ipsum"
-                                            },
-                                            "socail_media_url": {
-                                                "type": "string",
-                                                "example": "www.blbalbalba.com"
-                                            },
-                                            "craterdAt": {
-                                                "type": "string",
-                                                "example": "2021-10-27T13:00:39.286Z"
-                                            },
-                                            "updatedAt": {
-                                                "type": "string",
-                                                "example": "2021-10-27T13:00:39.286Z"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "failed",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "message": {
-                                    "type": "string",
-                                    "example": "Some error "
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "failed",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "message": {
-                                    "type": "string",
-                                    "example": "no user registered yet"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Token": []
-                    }
-                ]
-            }
-        },
-        "/user/{username}": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Get detail user",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "username",
-                        "in": "path",
-                        "description": "username of user",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Succes",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "result": {
-                                    "type": "string",
-                                    "example": "SUCCESS"
+                                "result":{
+                                    "type":"string",
+                                    "example":"success"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
                                 },
                                 "data": {
                                     "type": "array",
@@ -772,6 +729,142 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"success"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "failed retrive data "
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"success"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "no user registered yet"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{username}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get detail user",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "username of user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "dadang"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "kurniawan"
+                                        },
+                                        "username": {
+                                            "type": "string",
+                                            "example": "dadang123"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "dadang123@gmail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                                        },
+                                        "total_score": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "bio": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "location": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "socail_media_url": {
+                                            "type": "string",
+                                            "example": "www.blbalbalba.com"
+                                        },
+                                        "craterdAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "user not registred "
+                                }
+                            }
+                        }
+                    },
                     "500": {
                         "description": "failed",
                         "schema": {
@@ -783,20 +876,19 @@
                                 },
                                 "message": {
                                     "type": "string",
-                                    "example": "Some error occurred while creating the Player"
+                                    "example": "Some error occurred while retreving the Player"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
                                 }
                             }
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Token": []
-                    }
-                ]
+                }
             }
         },
-        "/user/update/{id}": {
+        "/user/{id}": {
             "put": {
                 "tags": [
                     "User"
@@ -837,7 +929,7 @@
                                 },
                                 "password": {
                                     "type": "string",
-                                    "example": "123"
+                                    "example": "123456"
                                 },
                                 "total_score": {
                                     "type": "integer",
@@ -868,53 +960,82 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "id": {
-                                    "type": "integer",
-                                    "example": "1"
+                                "result":{
+                                    "type":"string",
+                                    "example":"success"
                                 },
-                                "first_name": {
+                                "message": {
                                     "type": "string",
-                                    "example": "dadang"
+                                    "example": "data user has been successfully updated."
                                 },
-                                "last_name": {
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "dadang"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "kurniawan"
+                                        },
+                                        "username": {
+                                            "type": "string",
+                                            "example": "dadang123"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "dadang123@gmail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "$2a$12$RK4I6bZyHK9GYA3i9dD.XO90PsgpbaoNLz4/JUxep7MUxjOtaKfc2"
+                                        },
+                                        "total_score": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "bio": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "location": {
+                                            "type": "string",
+                                            "example": "lorem ipsum"
+                                        },
+                                        "socail_media_url": {
+                                            "type": "string",
+                                            "example": "www.blbalbalba.com"
+                                        },
+                                        "craterdAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "example": "2021-10-27T13:00:39.286Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
+                                "message": {
                                     "type": "string",
-                                    "example": "kurniawan"
-                                },
-                                "username": {
-                                    "type": "string",
-                                    "example": "dadang123"
-                                },
-                                "email": {
-                                    "type": "string",
-                                    "example": "dadang123@gmail.com"
-                                },
-                                "password": {
-                                    "type": "string",
-                                    "example": "123456"
-                                },
-                                "total_score": {
-                                    "type": "integer",
-                                    "example": "1"
-                                },
-                                "bio": {
-                                    "type": "string",
-                                    "example": "lorem ipsum"
-                                },
-                                "location": {
-                                    "type": "string",
-                                    "example": "lorem ipsum"
-                                },
-                                "socail_media_url": {
-                                    "type": "string",
-                                    "example": "www.blbalbalba.com"
-                                },
-                                "craterdAt": {
-                                    "type": "string",
-                                    "example": "2021-10-27T13:00:39.286Z"
-                                },
-                                "updatedAt": {
-                                    "type": "string",
-                                    "example": "2021-10-27T13:00:39.286Z"
+                                    "example": "Hey you!, stop right there. Authorized required"
                                 }
                             }
                         }
@@ -924,9 +1045,17 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "Some error"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
                                 }
                             }
                         }
@@ -936,6 +1065,10 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
                                 "message": {
                                     "type": "string",
                                     "example": "user not found"
@@ -957,7 +1090,7 @@
                     "User"
                 ],
                 "summary": "update score user in some game",
-                "description": "",
+                "description": "If the score has not been recorded, the system will add a score, if it is recorded, the system will change the score data",
                 "parameters": [
                     {
                         "name": "id",
@@ -999,6 +1132,10 @@
                                     "type": "string",
                                     "example": "SUCCESS"
                                 },
+                                "message":{
+                                    "type":"string",
+                                    "example":"data score has been successfully updated"
+                                },
                                 "data": {
                                     "type": "object",
                                     "properties": {
@@ -1007,6 +1144,47 @@
                                             "example": "20"
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"data score has been successfully added"
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "score": {
+                                            "type": "integer",
+                                            "example": "20"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result":{
+                                    "type":"string",
+                                    "example":"failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "login requered"
                                 }
                             }
                         }
@@ -1022,7 +1200,31 @@
                                 },
                                 "message": {
                                     "type": "string",
-                                    "example": "Some error occurred while creating the Player"
+                                    "example": "Some error occurred while updating the Player score"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
+                                }
+                            }
+                        }
+                    },
+                    "501": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while adding the Player score"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
                                 }
                             }
                         }

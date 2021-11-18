@@ -4,10 +4,9 @@ const authorization = require('../middlewares/authorization');
 const userController = require('../controllers/userController');
 
 router.get('/:username',userController.findOne);
-router.use(restrict);
 router.get('/', userController.getAllUser);
-router.put('/update/:id', authorization, userController.updateUser);
-router.put('/:id/score', userController.updateScore);
+router.use(restrict);
+router.put('/:id', authorization, userController.updateUser);
 
 
 module.exports = router;
