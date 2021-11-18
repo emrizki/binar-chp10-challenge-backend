@@ -157,7 +157,7 @@ const updateScore = async (req, res) => {
     },
     {
       where: {
-        userId: req.params.id,
+        userId: req.user.id,
         gameId: req.body.gameId,
       },
       returning: true,
