@@ -105,18 +105,19 @@ const updateScore = async (req, res) => {
   let user = await Detail.findOne({
     attributes: ['score'],
     where: {
-      userId: req.params.id,
+      userId: req.user.id,
       gameId: req.body.gameId,
     },
   });
 
   Detail.update(
+    
     {
       score: parseInt(req.body.score) + user['score'],
     },
     {
       where: {
-        userId: req.params.id,
+        userId: req.user.id,
         gameId: req.body.gameId,
       },
       returning: true,
