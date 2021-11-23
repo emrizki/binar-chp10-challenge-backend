@@ -12,7 +12,7 @@ const format = (user) => {
   };
 
   return {
-    result:"success",
+    result: "success",
     message: 'Login Successfully',
     data: {
       id,
@@ -25,6 +25,10 @@ const format = (user) => {
   };
 };
 
+const index = async (req, res) => {
+  res.send('Something is cooking inside this kitchen.. Yummy!');
+}
+
 const register = async (req, res) => {
   const { first_name, last_name, email, username, password } = req.body;
 
@@ -36,16 +40,16 @@ const register = async (req, res) => {
     if (user) {
       return res
         .status(409)
-        .json({ 
-          result:'failed',
-          message: 'The username is already registered' 
+        .json({
+          result: 'failed',
+          message: 'The username is already registered'
         });
     }
 
     // throw new Error('another error, e.g internal server error');
   } catch (err) {
     return res.status(500).json({
-      result:'failed',
+      result: 'failed',
       message: 'Oops! Something went wrong',
       error: err.message,
     });
@@ -61,13 +65,13 @@ const register = async (req, res) => {
     });
 
     return res.status(201).json({
-      result:'success',
+      result: 'success',
       message: 'Congratulations, your account has been successfully created.',
       data: user,
     });
   } catch (err) {
     return res.status(400).json({
-      result:'failed',
+      result: 'failed',
       message:
         'Registration Failed, Please go back and double check your information and make sure that is valid',
       error: err.errors[0].message,
@@ -84,9 +88,9 @@ const login = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(404).json({ 
-        result:"failed",
-        message: 'User Not Found' 
+      return res.status(404).json({
+        result: "failed",
+        message: 'User Not Found'
       });
     }
 
@@ -98,17 +102,17 @@ const login = async (req, res) => {
     } else {
       return res
         .status(401)
-        .json({ 
-          result:'failed',
-          message: 'Please enter a valid username or password' });
+        .json({
+          result: 'failed',
+          message: 'Please enter a valid username or password'
+        });
     }
   } catch (err) {
     return res.status(500).json({
-      result:'failed',
+      result: 'failed',
       message: 'Oops! Something went wrong',
       error: err.message,
     });
   }
 };
-
-module.exports = { register, login };
+module.exports = { index, register, login };
