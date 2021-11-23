@@ -1,4 +1,5 @@
 'use strict';
+const { hash } = require('bcryptjs');
 const { Model } = require('sequelize');
 const { hashPassword } = require('../helpers/bcrypt');
 module.exports = (sequelize, DataTypes) => {
@@ -13,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Detail, {
         foreignKey: 'userId',
         sourceKey: 'id',
-        as: 'detail_user'
+        as: 'detail_user',
       });
     }
   }
@@ -31,14 +32,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         unique: {
           args: true,
-          msg: 'email already registered',
+          msg: 'The email already registered',
         },
       },
       username: {
         type: DataTypes.STRING,
         unique: {
           args: true,
-          msg: 'username already exist',
+          msg: 'The username is already registerd',
         },
       },
       password: {
@@ -65,5 +66,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
+  User.addHook('beforeBulkUpdate', (user, options) => {
+    user.attributes.password = hashPassword(user.attributes.password);
+  });
   return User;
 };

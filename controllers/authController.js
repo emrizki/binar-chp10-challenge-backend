@@ -12,12 +12,16 @@ const format = (user) => {
   };
 
   return {
-    id,
-    first_name,
-    last_name,
-    email,
-    username,
-    accessToken: generateToken(payload),
+    result:"success",
+    message: 'Login Successfully',
+    data: {
+      id,
+      first_name,
+      last_name,
+      email,
+      username,
+      accessToken: generateToken(payload),
+    },
   };
 };
 
@@ -26,14 +30,25 @@ const register = async (req, res) => {
 
   try {
     const user = await User.findOne({
-      where: { email, username },
+      where: { username },
     });
 
     if (user) {
-      return res.json('User already registered');
+      return res
+        .status(409)
+        .json({ 
+          result:'failed',
+          message: 'The username is already registered' 
+        });
     }
+
+    // throw new Error('another error, e.g internal server error');
   } catch (err) {
-    return res.json(err);
+    return res.status(500).json({
+      result:'failed',
+      message: 'Oops! Something went wrong',
+      error: err.message,
+    });
   }
 
   try {
@@ -45,9 +60,18 @@ const register = async (req, res) => {
       password,
     });
 
-    return res.json(user);
+    return res.status(201).json({
+      result:'success',
+      message: 'Congratulations, your account has been successfully created.',
+      data: user,
+    });
   } catch (err) {
-    return res.json(err);
+    return res.status(400).json({
+      result:'failed',
+      message:
+        'Registration Failed, Please go back and double check your information and make sure that is valid',
+      error: err.errors[0].message,
+    });
   }
 };
 
@@ -60,18 +84,31 @@ const login = async (req, res) => {
     });
 
     if (!user) {
-      return res.json('User not found');
+      return res.status(404).json({ 
+        result:"failed",
+        message: 'User Not Found' 
+      });
     }
+
+    // throw new Error('another error, e.g internal server error');
 
     const match = comparePassword(password, user.password);
-
     if (match) {
-      return res.json(format(user));
+      return res.status(201).json(format(user));
     } else {
-      return res.json('Wrong Username or Password');
+      return res
+        .status(401)
+        .json({ 
+          result:'failed',
+          message: 'Please enter a valid username or password' });
     }
   } catch (err) {
-    return res.json(err);
+    return res.status(500).json({
+      result:'failed',
+      message: 'Oops! Something went wrong',
+      error: err.message,
+    });
   }
 };
+
 module.exports = { register, login };

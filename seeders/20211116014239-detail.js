@@ -11,24 +11,18 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Users', [
+     await queryInterface.bulkInsert('details', [
       {
-        first_name: 'dadang',
-        last_name: 'kurniawan',
-        email: 'dadang@gmail.com',
-        username: 'dadang',
-        password: '$2a$10$ZZYz/bUF9y34/6UnG4zMqe7P1nHtSxchY24qekHOuuM4gfsimemgq',
-        total_score:'2',
+        gameId: '1',
+        userId: '1',
+        score: '0',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        first_name: 'dadang1',
-        last_name: 'kurniawan2',
-        email: 'dadang1@gmail.com',
-        username: 'dadang1',
-        password: '$2a$10$ZZYz/bUF9y34/6UnG4zMqe7P1nHtSxchY24qekHOuuM4gfsimemgq',
-        total_score:'3',
+        gameId: '1',
+        userId: '2',
+        score: '0',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -43,6 +37,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Users', null, {});
+     await queryInterface.bulkDelete('details', null, {});
   }
 };

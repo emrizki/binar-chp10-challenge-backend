@@ -3,10 +3,10 @@ const restrict = require('../middlewares/restrict');
 const authorization = require('../middlewares/authorization');
 const userController = require('../controllers/userController');
 
-router.use(restrict);
+router.get('/:username',userController.findOne);
 router.get('/', userController.getAllUser);
-router.put('/update/:id', authorization, userController.updateUser);
-router.get('/leaderboard', userController.getLeaderboard);
-router.get('/:id',userController.findOne);
+router.use(restrict);
+router.put('/:id', authorization, userController.updateUser);
+
 
 module.exports = router;
