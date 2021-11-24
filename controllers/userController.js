@@ -73,7 +73,7 @@ const updateUser = async (req, res) => {
 const findOne = (req, res) => {
   User.findOne({
     attributes:[
-      'id','first_name','last_name','email',"username",'total_score','bio','location','social_media_url'
+      'id','first_name','last_name','email',"username",'total_score','bio','location','social_media_url','createdAt','updatedAt'
     ],
     where: {
       username: req.params.username,
