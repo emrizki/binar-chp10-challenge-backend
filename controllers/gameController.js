@@ -1,5 +1,37 @@
 const { Game, Detail, User } = require('../models');
 
+const newGame = (req, res)=>{
+    const { name, description, thumbnail_url, game_url, play_count } = req.body;
+        console.log("test")
+        Game.create({
+            name,
+            description,
+            thumbnail_url,
+            game_url,
+            play_count,
+        })
+        .then(data =>{
+            return res.status(201).json({
+                result: 'success',
+                message: 'new game has beed successfully crated',
+                data: data,
+            });
+
+        })
+        .catch(err=>{
+
+            return res.status(500).json({
+                result: 'failed',
+                message:
+                    'failed create new game',
+                error: err,
+            });
+        })
+
+
+
+}
+
 const findAll = (req, res) => {
     Game.findAll()
         .then(data => {
@@ -80,6 +112,7 @@ const getLeaderboard = (req, res) => {
         })
 }
 module.exports = {
+    newGame,
     findAll,
     findOne,
     getLeaderboard
