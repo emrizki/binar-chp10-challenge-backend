@@ -439,6 +439,128 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "Create New Game",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data game",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "batu-kertas-gunting"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "game batu kertas dan gunting"
+                                },
+                                "thumbnail_url": {
+                                    "type": "string",
+                                    "example": "lorem"
+                                },
+                                "game_url": {
+                                    "type": "string",
+                                    "example": "lorem ipsum"
+                                },
+                                "play_count": {
+                                    "type": "integer",
+                                    "example": "0"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "batu-kertas-gunting"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "game batu kertas dan gunting"
+                                            },
+                                            "thumbnail_url": {
+                                                "type": "string",
+                                                "example": "lorem"
+                                            },
+                                            "game_url": {
+                                                "type": "string",
+                                                "example": "lorem ipsum"
+                                            },
+                                            "play_count": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while retriving the Game"
+                                    
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/game/{id}": {
