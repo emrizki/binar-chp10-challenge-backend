@@ -111,4 +111,5 @@ const login = async (req, res) => {
     });
   }
 };
+
 module.exports = { index, register, login };
