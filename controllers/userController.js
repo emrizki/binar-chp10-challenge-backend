@@ -5,19 +5,22 @@ const getAllUser = async (req, res) => {
     const users = await User.findAll();
 
     if (!users) {
-      res.status(404).json({ 
-        result:"failed",
-        message: 'no user registered yet' });
+      res.status(404).json({
+        result: 'failed',
+        message: 'no user registered yet',
+      });
     }
 
-    return res.status(200).json({ 
-      result:'success',
-      message:'successfully retrive data',
-      data: users });
+    return res.status(200).json({
+      result: 'success',
+      message: 'successfully retrive data',
+      data: users,
+    });
   } catch (err) {
-    res.status(400).json({ 
-      result:'failed',
-      message: 'failed retrive data' });
+    res.status(400).json({
+      result: 'failed',
+      message: 'failed retrive data',
+    });
   }
 };
 
@@ -32,7 +35,7 @@ const updateUser = async (req, res) => {
       total_score,
       bio,
       location,
-      socail_media_url,
+      social_media_url,
     } = req.body;
 
     const payload = {
@@ -44,7 +47,7 @@ const updateUser = async (req, res) => {
       total_score,
       bio,
       location,
-      socail_media_url,
+      social_media_url,
     };
 
     const id = +req.params.id;
@@ -52,20 +55,22 @@ const updateUser = async (req, res) => {
     const user = await User.update(payload, { where: { id }, returning: true });
 
     if (!user) {
-      return res.status(404).json({ 
-        result:'failed',
-        message: ' User Not Found' });
+      return res.status(404).json({
+        result: 'failed',
+        message: ' User Not Found',
+      });
     }
     return res.status(200).json({
-      result:'success',
+      result: 'success',
       message: 'Congratulations, your account has been successfully updated.',
       data: user[1][0],
     });
   } catch (err) {
+    console.log(err);
     return res.status(400).json({
-      result:'faileds',
+      result: 'faileds',
       message: 'Oops! Something went wrong',
-      error: err.errors[0].message,
+      error: err,
     });
   }
 };
@@ -80,13 +85,12 @@ const findOne = (req, res) => {
       if (!data) {
         return res.status(404).json({
           result: 'failed',
-          message: "user not registered",
-          
+          message: 'user not registered',
         });
       }
       res.status(200).json({
         result: 'success',
-        message: "successfully retrieve data",
+        message: 'successfully retrieve data',
         data: data,
       });
     })
@@ -94,7 +98,7 @@ const findOne = (req, res) => {
       res.status(500).json({
         result: 'failed',
         message: 'some error occured while retrieving game',
-        error: err.message 
+        error: err.message,
       });
     });
 };
@@ -106,7 +110,7 @@ const getLeaderboard = (req, res) => {
     .then((data) => {
       res.status(200).json({
         result: 'success',
-        message: "successfully retrieve data",
+        message: 'successfully retrieve data',
         data: data,
       });
     })
@@ -114,42 +118,42 @@ const getLeaderboard = (req, res) => {
       res.status(500).json({
         result: 'failed',
         message: 'some error occured while retrieving game',
-        error: err.message 
+        error: err.message,
       });
     });
 };
 
 const updateScore = async (req, res) => {
-    let user = await Detail.findOne({
-      attributes: ['score'],
-      where: {
-        userId: req.user.id,
-        gameId: req.body.gameId,
-      },
-    });
-    if (!user) {
-      return Detail.create({
-        userId: req.user.id,
-        gameId: req.body.gameId,
-        score: req.body.score
-      })
-      .then(data =>{
+  let user = await Detail.findOne({
+    attributes: ['score'],
+    where: {
+      userId: req.user.id,
+      gameId: req.body.gameId,
+    },
+  });
+  if (!user) {
+    return Detail.create({
+      userId: req.user.id,
+      gameId: req.body.gameId,
+      score: req.body.score,
+    })
+      .then((data) => {
         res.status(201).json({
           result: 'success',
-          message: "score player has been successfully added",
+          message: 'score player has been successfully added',
           data: {
             score: data.score,
           },
         });
       })
-      .catch(err=>{
+      .catch((err) => {
         res.status(501).json({
           result: 'failed',
-          message:'some error occured while adding score',
-          error: err.message 
+          message: 'some error occured while adding score',
+          error: err.message,
         });
-      })
-    }
+      });
+  }
 
   Detail.update(
     {
@@ -166,7 +170,7 @@ const updateScore = async (req, res) => {
     .then((data) => {
       res.status(200).json({
         result: 'success',
-        message: "score player has been successfully updated",
+        message: 'score player has been successfully updated',
         data: {
           score: data[1][0].score,
         },
@@ -175,8 +179,8 @@ const updateScore = async (req, res) => {
     .catch((err) => {
       res.status(500).json({
         result: 'failed',
-        message:'some error occured while updating score',
-        error: err.message 
+        message: 'some error occured while updating score',
+        error: err.message,
       });
     });
 };

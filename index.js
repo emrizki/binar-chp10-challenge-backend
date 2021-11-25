@@ -7,12 +7,13 @@ const app = express();
 const swaggerUI = require('swagger-ui-express');
 
 const swaggerJSON = require('./swagger.json');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
-var corsOptions = {
-  origin: "http://localhost:3001"
-};
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: 'http://localhost:3001',
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
