@@ -9,7 +9,8 @@
     "db:undo:migrate": "NODE_ENV=development npx sequelize db:migrate:undo:all",
     "db:seed": "NODE_ENV=development npx sequelize db:seed:all",
     "dev": "NODE_ENV=development nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development node index.js"
   },
   "repository": {
     "type": "git",
