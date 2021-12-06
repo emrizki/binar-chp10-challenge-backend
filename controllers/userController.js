@@ -188,10 +188,27 @@ const updateScore = async (req, res) => {
     });
 };
 
+const getPlayedGame = (req, res) => {
+  Detail.findAll({
+    attributes: ['gameId'],
+    where: {
+      userId: req.user.id,
+    },
+  })
+  .then((game)=>{
+    res.status(200).json({
+      result: 'success',
+      message: 'successfully retriving data',
+      data: game
+    });
+  })
+}
+
 module.exports = {
   findOne,
   getLeaderboard,
   getAllUser,
   updateUser,
   updateScore,
+  getPlayedGame
 };
