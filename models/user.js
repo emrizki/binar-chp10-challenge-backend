@@ -20,23 +20,43 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [2, 50],
+            msg: 'Your first name minlength 2 and cannot exceed 50 characters',
+          },
+        },
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       email: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
           isEmail: {
             args: true,
-            msg: 'invalid email format',
+            msg: 'Please enter valid email address',
           },
         },
         unique: {
           args: true,
-          msg: 'The email already registered',
+          msg: 'The email is already registered',
         },
       },
       username: {
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [2, 20],
+            msg: 'Your username min length 2 & cannot exceed 20 characters',
+          },
+        },
         unique: {
           args: true,
           msg: 'The username is already registerd',
@@ -44,10 +64,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
           len: {
             args: [6],
-            msg: 'password at least 6 characters',
+            msg: 'Your password must be longer than 6 characters',
           },
         },
       },
