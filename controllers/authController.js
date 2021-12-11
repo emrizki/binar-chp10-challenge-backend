@@ -112,4 +112,12 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { index, register, login };
+const currentUserProfile = async (req, res) => {
+  const user = await User.findByPk(req.user.id);
+  res.status(200).json({
+    success: true,
+    user,
+  });
+};
+
+module.exports = { index, register, login, currentUserProfile };

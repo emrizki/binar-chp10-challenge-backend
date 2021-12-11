@@ -1,4 +1,5 @@
 const { User, Detail } = require('../models');
+const bcrypt = require('bcryptjs');
 
 const getAllUser = async (req, res) => {
   try {
@@ -31,28 +32,31 @@ const updateUser = async (req, res) => {
       last_name,
       email,
       username,
-      password,
-      total_score,
       bio,
       location,
       social_media_url,
     } = req.body;
 
-    const payload = {
-      first_name,
-      last_name,
-      email,
-      username,
-      password,
-      total_score,
-      bio,
-      location,
-      social_media_url,
-    };
+    const id = req.user.id;
+    const hashPassword = bcrypt.hashSync(
+      req.body.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
 
-    const id = +req.params.id;
-
-    const user = await User.update(payload, { where: { id }, returning: true });
+    const user = await User.update(
+      {
+        first_name,
+        last_name,
+        email,
+        username,
+        password: hashPassword,
+        bio,
+        location,
+        social_media_url,
+      },
+      { where: { id }, returning: true }
+    );
 
     if (!user) {
       return res.status(404).json({
@@ -66,19 +70,28 @@ const updateUser = async (req, res) => {
       data: user[1][0],
     });
   } catch (err) {
-    console.log(err);
     return res.status(400).json({
       result: 'faileds',
       message: 'Oops! Something went wrong',
-      error: err,
+      error: err.message,
     });
   }
 };
 
 const findOne = (req, res) => {
   User.findOne({
-    attributes:[
-      'id','first_name','last_name','email',"username",'total_score','bio','location','social_media_url','createdAt','updatedAt'
+    attributes: [
+      'id',
+      'first_name',
+      'last_name',
+      'email',
+      'username',
+      'total_score',
+      'bio',
+      'location',
+      'social_media_url',
+      'createdAt',
+      'updatedAt',
     ],
     where: {
       username: req.params.username,
@@ -194,15 +207,14 @@ const getPlayedGame = (req, res) => {
     where: {
       userId: req.user.id,
     },
-  })
-  .then((game)=>{
+  }).then((game) => {
     res.status(200).json({
       result: 'success',
       message: 'successfully retriving data',
-      data: game
+      data: game,
     });
-  })
-}
+  });
+};
 
 module.exports = {
   findOne,
@@ -210,5 +222,5 @@ module.exports = {
   getAllUser,
   updateUser,
   updateScore,
-  getPlayedGame
+  getPlayedGame,
 };

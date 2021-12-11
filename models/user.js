@@ -87,8 +87,5 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
-  User.addHook('beforeBulkUpdate', (user, options) => {
-    user.attributes.password = hashPassword(user.attributes.password);
-  });
   return User;
 };
