@@ -42,6 +42,10 @@ module.exports = (sequelize, DataTypes) => {
             args: true,
             msg: 'Please enter valid email address',
           },
+          isLowercase: {
+            args: true,
+            msg: 'only lowercase letters allowed for email',
+          },
         },
         unique: {
           args: true,

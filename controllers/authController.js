@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const { OAuth2Client } = require('google-auth-library');
 const { comparePassword } = require('../helpers/bcrypt');
 const { generateToken } = require('../helpers/jwt');
 
@@ -92,8 +93,6 @@ const login = async (req, res) => {
       });
     }
 
-    // throw new Error('another error, e.g internal server error');
-
     const match = comparePassword(password, user.password);
     if (match) {
       return res.status(200).json(format(user));
@@ -112,6 +111,49 @@ const login = async (req, res) => {
   }
 };
 
+const loginGoogle = (req, res) => {
+  const { tokenId } = req.body;
+  const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+  let email = null;
+  let first_name = null;
+  let last_name = null;
+  let username = '';
+  client
+    .verifyIdToken({
+      idToken: tokenId,
+      audience: process.env.GOOGLE_CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
+      // Or, if multiple clients access the backend:
+      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+    })
+    .then((ticket) => {
+      const payload = ticket.getPayload();
+      email = payload.email;
+      first_name = payload.given_name;
+      last_name = payload.family_name;
+      username = email.substring(0, email.lastIndexOf('@'));
+      return User.findOne({ where: { email } });
+    })
+    .then((user) => {
+      if (!user) {
+        return User.create({
+          first_name,
+          last_name,
+          email,
+          username,
+          password: Math.random() * 1000 + 'google random password secret',
+        });
+      } else {
+        return user;
+      }
+    })
+    .then((user) => {
+      res.status(200).json(format(user));
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
 const currentUserProfile = async (req, res) => {
   const user = await User.findByPk(req.user.id);
   res.status(200).json({
@@ -120,4 +162,4 @@ const currentUserProfile = async (req, res) => {
   });
 };
 
-module.exports = { index, register, login, currentUserProfile };
+module.exports = { index, register, login, loginGoogle, currentUserProfile };
