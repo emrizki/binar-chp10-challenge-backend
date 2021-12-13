@@ -80,6 +80,7 @@ module.exports = (sequelize, DataTypes) => {
       bio: DataTypes.STRING,
       location: DataTypes.STRING,
       social_media_url: DataTypes.STRING,
+      reset_password_link: DataTypes.STRING,
     },
     {
       sequelize,
