@@ -2,7 +2,6 @@ const { Game, Detail, User } = require('../models');
 
 const newGame = (req, res) => {
   const { name, description, thumbnail_url, game_url, play_count } = req.body;
-  console.log('test');
   Game.create({
     name,
     description,

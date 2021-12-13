@@ -2,6 +2,8 @@ const { User } = require('../models');
 const { OAuth2Client } = require('google-auth-library');
 const { comparePassword } = require('../helpers/bcrypt');
 const { generateToken } = require('../helpers/jwt');
+const { sendEmail } = require('../helpers/sendEmail');
+const bcrypt = require('bcryptjs');
 
 const format = (user) => {
   const { id, first_name, last_name, email, username } = user;
@@ -162,4 +164,65 @@ const currentUserProfile = async (req, res) => {
   });
 };
 
-module.exports = { index, register, login, loginGoogle, currentUserProfile };
+const forgotPassword = async (req, res) => {
+  const user = await User.findOne({ where: { email: req.body.email } });
+  const { id, username, email } = user;
+  if (!user) {
+    return res.status(404).json({
+      status: false,
+      message: 'email is not registered',
+    });
+  }
+  const payload = { id, username, email };
+  await user.update({ reset_password_link: generateToken(payload) });
+
+  const templateEmail = {
+    from: 'Go Play',
+    to: req.body.email,
+    subject: 'Link to Reset Password',
+    html: `<p>Please click the link below to reset your password</p><p>${
+      process.env.CLIENT_URL
+    }/resetpassword/${generateToken(payload)}</p>`,
+  };
+  sendEmail(templateEmail);
+  return res.status(200).json({
+    status: true,
+    message: 'Link to reset password sent successfully',
+  });
+};
+
+const resetPassword = async (req, res) => {
+  try {
+    const { token, newPassword } = req.body;
+    console.log(newPassword);
+    console.log(token);
+
+    const hashPassword = bcrypt.hashSync(
+      newPassword,
+      bcrypt.genSaltSync(10),
+      null
+    );
+
+    const user = await User.update(
+      { password: hashPassword },
+      { where: { reset_password_link: token }, returning: true }
+    );
+
+    return res.status(200).json({
+      status: true,
+      message: 'password changed successfully',
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+module.exports = {
+  index,
+  register,
+  login,
+  loginGoogle,
+  currentUserProfile,
+  forgotPassword,
+  resetPassword,
+};
