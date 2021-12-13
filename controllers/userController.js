@@ -207,11 +207,19 @@ const getPlayedGame = (req, res) => {
     where: {
       userId: req.user.id,
     },
-  }).then((game) => {
+  })
+  .then((game) => {
     res.status(200).json({
       result: 'success',
       message: 'successfully retriving data',
       data: game,
+    });
+  })
+  .catch((err) => {
+    res.status(500).json({
+      result: 'failed',
+      message: 'some error occured while retriving data',
+      error: err.message,
     });
   });
 };
