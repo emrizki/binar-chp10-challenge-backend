@@ -22,7 +22,7 @@ module.exports = {
       },
       game_url: {
         type: Sequelize.STRING,
-        allowNull: true
+        allowNull: false
       },
       play_count: {
         type: Sequelize.INTEGER,
