@@ -563,6 +563,82 @@
                 }
             }
         },
+        "/game/recomendation": {
+            "get": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "List 4 popular game",
+                "description": "",
+                "parameters": [],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "batu-kertas-gunting"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "game batu kertas dan gunting"
+                                            },
+                                            "play_count": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while retriving the Game"
+                                    
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/game/{id}": {
             "get": {
                 "tags": [
@@ -1012,6 +1088,76 @@
                         }
                     }
                 }
+            }
+        },
+        "/user/playedGame": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User Played Game",
+                "description": "",
+                "parameters": [
+                   
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message":{
+                                    "type":"string",
+                                    "example":"successfully retrive data"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "gameId": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "failed"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while retreving the data"
+                                },
+                                "error":{
+                                    "type":"string",
+                                    "example":"error message"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Token": []
+                    }
+                ]
             }
         },
         "/user/{id}": {
